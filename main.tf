@@ -1,6 +1,3 @@
-locals {
-  enabled = module.this.enabled
-}
 
 # Do not use this resource to associate a WAFv2 Web ACL with a Cloudfront Distribution.
 # The AWS API call backing this resource notes that you should use the `web_acl_id` property on the `cloudfront_distribution` instead.
@@ -8,7 +5,7 @@ locals {
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_web_acl_association
 # https://docs.aws.amazon.com/waf/latest/APIReference/API_AssociateWebACL.html
 resource "aws_wafv2_web_acl_association" "default" {
-  count = local.enabled && length(var.association_resource_arns) > 0 ? length(var.association_resource_arns) : 0
+  count = var.enabled && length(var.association_resource_arns) > 0 ? length(var.association_resource_arns) : 0
 
   resource_arn = var.association_resource_arns[count.index]
   web_acl_arn  = one(aws_wafv2_web_acl.default[*].arn)
@@ -20,7 +17,7 @@ resource "aws_wafv2_web_acl_association" "default" {
 # If you are capturing logs for Amazon CloudFront, create the firehose in the US East (N. Virginia) region.
 # It is important to name the data firehose, CloudWatch log group, and/or S3 bucket with a prefix of `aws-waf-logs-`.
 resource "aws_wafv2_web_acl_logging_configuration" "default" {
-  count = local.enabled && length(var.log_destination_configs) > 0 ? 1 : 0
+  count = var.enabled && length(var.log_destination_configs) > 0 ? 1 : 0
 
   resource_arn            = one(aws_wafv2_web_acl.default[*].arn)
   log_destination_configs = var.log_destination_configs
