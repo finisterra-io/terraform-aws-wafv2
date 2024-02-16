@@ -11,7 +11,7 @@ variable "name" {
 
 variable "description" {
   type        = string
-  default     = "Managed by Terraform"
+  default     = null
   description = "A friendly description of the WebACL."
 }
 
