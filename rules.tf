@@ -123,6 +123,51 @@ resource "aws_wafv2_web_acl" "default" {
       dynamic "statement" {
         for_each = lookup(rule.value, "statement", null) != null ? rule.value.statement : []
         content {
+
+          # dynamic "and_statement" {
+          #   for_each = lookup(statement.value, "and_statement", null) != null ? statement.value.and_statement : []
+          #   content {
+          #     dynamic "statement" {
+          #       for_each = lookup(and_statement.value, "statement", null) != null ? and_statement.value.statement : []
+          #       content {
+
+
+
+          #         dynamic "not_statement" {
+          #           for_each = lookup(statement.value, "not_statement", null) != null ? statement.value.not_statement : []
+          #           content {
+          #             statement {
+          #               dynamic "byte_match_statement" {
+          #                 for_each = lookup(not_statement.value.statement[0], "byte_match_statement", null) != null ? not_statement.value.statement[0].byte_match_statement : []
+          #                 content {
+          #                   positional_constraint = lookup(byte_match_statement.value, "positional_constraint", null)
+          #                   search_string         = byte_match_statement.value.search_string
+          #                   dynamic "field_to_match" {
+          #                     for_each = lookup(byte_match_statement.value, "field_to_match", null) != null ? byte_match_statement.value.field_to_match : []
+          #                     content {
+          #                       dynamic "uri_path" {
+          #                         for_each = lookup(field_to_match.value, "uri_path", null) != null ? [1] : []
+          #                         content {}
+          #                       }
+          #                     }
+          #                   }
+          #                   dynamic "text_transformation" {
+          #                     for_each = lookup(byte_match_statement.value, "text_transformation", null) != null ? byte_match_statement.value.text_transformation : []
+          #                     content {
+          #                       priority = text_transformation.value.priority
+          #                       type     = text_transformation.value.type
+          #                     }
+          #                   }
+          #                 }
+          #               }
+          #             }
+          #           }
+          #         }
+          #       }
+          #     }
+          #   }
+          # }
+
           dynamic "managed_rule_group_statement" {
             for_each = lookup(statement.value, "managed_rule_group_statement", null) != null ? statement.value.managed_rule_group_statement : []
 
