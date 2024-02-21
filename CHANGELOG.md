@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.0.4](https://github.com/finisterra-io/terraform-aws-wafv2/compare/v1.0.3...v1.0.4) (2024-02-21)
+
+
+### Bug Fixes
+
+* add-wafv2-rule ([8604e6b](https://github.com/finisterra-io/terraform-aws-wafv2/commit/8604e6b974a141a1af28ee1b6e0ac0768e2478dd))
+
 ### [1.0.3](https://github.com/finisterra-io/terraform-aws-wafv2/compare/v1.0.2...v1.0.3) (2024-02-21)
 
 
