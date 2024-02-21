@@ -124,6 +124,17 @@ resource "aws_wafv2_web_acl" "default" {
         for_each = lookup(rule.value, "statement", null) != null ? rule.value.statement : []
         content {
 
+          dynamic "regex_pattern_set_reference_statement" {
+            for_each = lookup(statement.value, "regex_pattern_set_reference_statement", [])
+            content {
+              arn = regex_pattern_set_reference_statement.value.arn
+              text_transformation {
+                priority = regex_pattern_set_reference_statement.value.text_transformation[0].priority
+                type     = regex_pattern_set_reference_statement.value.text_transformation[0].type
+              }
+            }
+          }
+
           dynamic "rule_group_reference_statement" {
             for_each = lookup(statement.value, "rule_group_reference_statement", [])
             content {
