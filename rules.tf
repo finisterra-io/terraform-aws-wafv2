@@ -128,6 +128,19 @@ resource "aws_wafv2_web_acl" "default" {
             for_each = lookup(statement.value, "regex_pattern_set_reference_statement", [])
             content {
               arn = regex_pattern_set_reference_statement.value.arn
+              field_to_match {
+                dynamic "uri_path" {
+                  for_each = lookup(regex_pattern_set_reference_statement.value.field_to_match[0], "uri_path", [])
+                  content {}
+                }
+                dynamic "single_header" {
+                  for_each = lookup(regex_pattern_set_reference_statement.value.field_to_match[0], "single_header", [])
+                  content {
+                    name = regex_pattern_set_reference_statement.value.field_to_match[0].single_header[0].name
+                  }
+                }
+
+              }
               text_transformation {
                 priority = regex_pattern_set_reference_statement.value.text_transformation[0].priority
                 type     = regex_pattern_set_reference_statement.value.text_transformation[0].type
