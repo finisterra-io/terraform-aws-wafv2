@@ -140,12 +140,6 @@ variable "rules" {
   default     = []
 }
 
-variable "ip_sets" {
-  type        = map(any)
-  default     = {}
-  description = "A list of IP Set configuration objects."
-}
-
 variable "tags" {
   type        = map(string)
   default     = {}
