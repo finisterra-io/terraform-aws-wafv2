@@ -21,7 +21,6 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_wafv2_ip_set.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_ip_set) | resource |
 | [aws_wafv2_web_acl.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_web_acl) | resource |
 | [aws_wafv2_web_acl_association.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_web_acl_association) | resource |
 | [aws_wafv2_web_acl_logging_configuration.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_web_acl_logging_configuration) | resource |
@@ -35,7 +34,6 @@ No modules.
 | <a name="input_default_action"></a> [default\_action](#input\_default\_action) | Specifies that AWS WAF should allow requests by default. Possible values: `allow`, `block`. | `list(any)` | n/a | yes |
 | <a name="input_description"></a> [description](#input\_description) | A friendly description of the WebACL. | `string` | `null` | no |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Set to `false` to prevent the module from creating any resources. | `bool` | `true` | no |
-| <a name="input_ip_sets"></a> [ip\_sets](#input\_ip\_sets) | A list of IP Set configuration objects. | `map(any)` | `{}` | no |
 | <a name="input_log_destination_configs"></a> [log\_destination\_configs](#input\_log\_destination\_configs) | The Amazon Kinesis Data Firehose, CloudWatch Log log group, or S3 bucket Amazon Resource Names (ARNs) that you want to associate with the web ACL | `list(string)` | `[]` | no |
 | <a name="input_logging_filter"></a> [logging\_filter](#input\_logging\_filter) | A configuration block that specifies which web requests are kept in the logs and which are dropped.<br>You can filter on the rule action and on the web request labels that were applied by matching rules during web ACL evaluation. | `list(any)` | `[]` | no |
 | <a name="input_name"></a> [name](#input\_name) | A friendly name of the WebACL. | `string` | n/a | yes |
