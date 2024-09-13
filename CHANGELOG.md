@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.0.6](https://github.com/finisterra-io/terraform-aws-wafv2/compare/v1.0.5...v1.0.6) (2024-09-13)
+
+
+### Bug Fixes
+
+* add tfsec ([904965c](https://github.com/finisterra-io/terraform-aws-wafv2/commit/904965c33afaf82dc3e244a6e792336455b108ef))
+* format ([b76f634](https://github.com/finisterra-io/terraform-aws-wafv2/commit/b76f634a5a499a30dc6c6cf432a6978bdc56a175))
+
 ### [1.0.5](https://github.com/finisterra-io/terraform-aws-wafv2/compare/v1.0.4...v1.0.5) (2024-02-21)
 
 
