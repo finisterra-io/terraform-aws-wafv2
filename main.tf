@@ -68,15 +68,15 @@ resource "aws_wafv2_web_acl_logging_configuration" "default" {
 
             content {
               dynamic "action_condition" {
-                for_each = condition.value.action_condition != null ? [true] : []
+                for_each = length(condition.value.action_condition) > 0 ? condition.value.action_condition : []
                 content {
-                  action = condition.value.action_condition.action
+                  action = action_condition.value.action
                 }
               }
               dynamic "label_name_condition" {
-                for_each = condition.value.label_name_condition != null ? [true] : []
+                for_each = length(condition.value.label_name_condition) > 0 ? condition.value.label_name_condition : []
                 content {
-                  label_name = condition.value.label_name_condition.label_name
+                  label_name = label_name_condition.value.label_name
                 }
               }
             }
